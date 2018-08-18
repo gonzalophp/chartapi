@@ -19,7 +19,9 @@ run: remove
 	docker run -d -t $(port) --name $(container) $(image) bash
 
 run-dev: remove
-	docker run -d -t $(port) --volume `pwd`:/home/sites/chartapi --name $(container) $(image) bash
+	docker run -d -t $(port) \
+	--volume `pwd`:/home/sites/chartapi \
+	--name $(container) $(image) bash
 
 exec:
 	docker exec -it $(container) bash
