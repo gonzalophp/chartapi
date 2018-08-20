@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Logger;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,6 +36,7 @@ class TestCommand extends Command
             // ...
         }
 
+        Logger::critical('RRRRRRRRRRRRRRRRRRR', ['tttt'=> [1,2,3]]);
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
     }
 }
