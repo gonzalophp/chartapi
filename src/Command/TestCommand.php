@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Logger;
+use App\Models\Chart;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,6 +14,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class TestCommand extends Command
 {
     protected static $defaultName = 'command:test';
+    private $chart;
+
+    public function __construct($name = null, Chart $chart)
+    {
+        parent::__construct($name);
+        $this->chart = $chart;
+
+    }
 
     protected function configure()
     {
@@ -36,7 +45,9 @@ class TestCommand extends Command
             // ...
         }
 
-        Logger::critical('RRRRRRRRRRRRRRRRRRR', ['tttt'=> [1,2,3]]);
+        Logger::critical('aaaaaaaaaaa', ['tttt'=> [1,2,3]]);
         $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+
+        Logger::critical('LLLLLLLLLLL'.$this->chart->returnAppClass());
     }
 }
